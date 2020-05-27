@@ -2750,10 +2750,10 @@ split-string@^3.0.1, split-string@^3.0.2:
   dependencies:
     extend-shallow "^3.0.0"
 
-springtype@^2.0.0-beta.81:
-  version "2.0.0-beta.81"
-  resolved "https://registry.yarnpkg.com/springtype/-/springtype-2.0.0-beta.81.tgz#d31e773463c704cd1296185e396d5a983461c51a"
-  integrity sha512-8wnoFZhJxeaf6fBmq5YXxrKUDvc9ZB8KL4N3lAq9/osp37yqijzcSB1EbDxwry+EvEW5hKd484FXmggprwmhog==
+springtype@^2.0.0-beta.83:
+  version "2.0.0-beta.83"
+  resolved "https://registry.yarnpkg.com/springtype/-/springtype-2.0.0-beta.83.tgz#fe939763a03dc834de72ed078a15a9d78463db98"
+  integrity sha512-pDqD5kiZzSmvyL3hztVlGSXN/iUOGNMOmx3CYWv6/o2GkI5dpKwqu1H32J5WFrrfOznPBn+uiqTFNTawgtIW6Q==
 
 stackframe@^0.3.1:
   version "0.3.1"

@@ -22,10 +22,7 @@ const getValidationEventListenerFromEnv =() => {
 }
 
 const getLogDebugFromEnv = () => {
-    const env = process.env[DEFAULT_ST_FORM_LOG_DEBUG_MESSAGE_KEY];
-    if(env){
-        return env === 'true';
-    }
+        return process.env[DEFAULT_ST_FORM_LOG_DEBUG_MESSAGE_KEY] === 'true';
 }
 
 const getValidationDebunceTimeInMsFromEnv = () => {
