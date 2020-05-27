@@ -6,10 +6,10 @@
   },
   "description": "A SpringType project for form validation",
   "scripts": {
-    "clean": "st-run st-rm-rf dist",
+    "clean": "npx st-rm-rf dist",
     "prebuild": "yarn clean",
     "build": "tsc",
-    "postbuild": "st-run st-cp package.json .npmignore README.md LICENSE dist"
+    "postbuild": "npx st-cp package.json .npmignore README.md LICENSE dist"
   },
   "author": "Michael Mannseicher <m.mansi1@gmx.net> & Aron Homberg <info@aron-homberg.de>",
   "license": "MIT",
