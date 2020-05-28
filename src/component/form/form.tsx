@@ -23,6 +23,8 @@ export const FORM_VALUE_FUNCTION_KEY = "FORM_VALUE_FUNCTION";
 @component
 export class Form extends st.component<IAttrForm> {
 
+    tag = "st-form";
+
     @attr
     name: string = "form";
 
@@ -153,15 +155,15 @@ export class Form extends st.component<IAttrForm> {
             if (form[FORM_PROPERTY_NAME] && form[FORM_PROPERTY_NAME] instanceof Form) {
                 const nestedForm = form[FORM_PROPERTY_NAME] as Form;
                 if (!!nestedForm && nestedForm === this) {
-                    forms.push(nestedForm);
+                    //do nothing its me
                     continue;
                 }
                 let parent: ILifecycle | undefined = nestedForm.parent;
                 while (!!parent) {
-                    parent = parent.parent;
                     if (!!parent && parent instanceof Form && parent === this) {
                         forms.push(nestedForm);
                     }
+                    parent = parent.parent;
                 }
             } else {
                 st.error('Using an nested form, please use <Form name="formName">', form);
