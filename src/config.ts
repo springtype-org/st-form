@@ -11,6 +11,7 @@ export interface FormConfig {
     validationDebounceTimeInMs: number;
     validationEventListener: Array<string>;
     validationPropertyName: string;
+    validatorName: string;
     logDebugMessages: boolean;
 }
 
@@ -25,7 +26,7 @@ const getLogDebugFromEnv = () => {
         return process.env[DEFAULT_ST_FORM_LOG_DEBUG_MESSAGE_KEY] === 'true';
 }
 
-const getValidationDebunceTimeInMsFromEnv = () => {
+const getValidationDebounceTimeInMsFromEnv = () => {
     const env = process.env[DEFAULT_ST_FORM_VALIDATION_DEBOUNCE_TIME_IN_MS_KEY];
     if(env){
         return parseInt(env);
@@ -34,8 +35,9 @@ const getValidationDebunceTimeInMsFromEnv = () => {
 export const defaultFormConfig: () => FormConfig = () => {
     return {
         logDebugMessages: getLogDebugFromEnv() || false,
+        validatorName: 'VALIDATOR_NAME',
         validationPropertyName: process.env[DEFAULT_ST_FORM_VALIDATION_PROPERTY_NAME_KEY] || 'VALIDATION',
-        validationDebounceTimeInMs: getValidationDebunceTimeInMsFromEnv() || 250,
+        validationDebounceTimeInMs: getValidationDebounceTimeInMsFromEnv() || 250,
         validationEventListener: getValidationEventListenerFromEnv() || ['change', 'keyup']
     }
 };

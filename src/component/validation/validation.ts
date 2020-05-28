@@ -120,7 +120,7 @@ export class Validation extends st.component<IAttrValidation> {
                                     for (const validator of this.validators) {
                                         if (!await validator(value)) {
                                             valid = false;
-                                            errors.push((validator as any)[getFormConfig().validationPropertyName]);
+                                            errors.push((validator as any)[getFormConfig().validatorName]);
                                         }
                                     }
                                     this.state = Object.freeze({validated: true, value: value, valid: valid, errors: errors});
