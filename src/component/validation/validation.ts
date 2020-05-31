@@ -1,7 +1,7 @@
 import {attr, component, event} from "springtype/web/component";
 import {st} from "springtype/core";
 import {IEventListener} from "springtype/web/component/interface";
-import {getFormConfig} from "../../config";
+import {stForm} from "../../st-form";
 
 export interface IAttrValidation {
     debounceTimeInMs?: number;
@@ -42,6 +42,7 @@ export class Validation extends st.component<IAttrValidation> {
     timeout!: any;
 
     state!: IValidation;
+
     constructor() {
         super();
     }
@@ -63,14 +64,14 @@ export class Validation extends st.component<IAttrValidation> {
 
     onConnect(): void {
         super.onConnect();
-        for (const eventListener of this.eventListeners || getFormConfig().validationEventListener) {
+        for (const eventListener of this.eventListeners || stForm.validationEventListener) {
             this.el.addEventListener(eventListener, this.onTargetEvent(eventListener));
         }
     }
 
     onDisconnect(): void {
         super.onDisconnect();
-        for (const eventListener of this.eventListeners || getFormConfig().validationEventListener) {
+        for (const eventListener of this.eventListeners || stForm.validationEventListener) {
             this.el.removeEventListener(eventListener, this.onTargetEvent(eventListener));
         }
     }
@@ -88,7 +89,7 @@ export class Validation extends st.component<IAttrValidation> {
         if (!this.target) {
             st.error('Validator, missing textarea or input child')
         } else {
-            (this.target as any)[getFormConfig().validationPropertyName] = this;
+            (this.target as any)[stForm.validationPropertyName] = this;
         }
     }
 
@@ -120,7 +121,7 @@ export class Validation extends st.component<IAttrValidation> {
                                     for (const validator of this.validators) {
                                         if (!await validator(value)) {
                                             valid = false;
-                                            errors.push((validator as any)[getFormConfig().validatorName]);
+                                            errors.push((validator as any)[stForm.validatorName]);
                                         }
                                     }
                                     this.state = Object.freeze({validated: true, value: value, valid: valid, errors: errors});
@@ -133,7 +134,7 @@ export class Validation extends st.component<IAttrValidation> {
                                 resolve(this.state.valid);
                             }
                         },
-                        this.debounceTimeInMs || getFormConfig().validationDebounceTimeInMs
+                        this.debounceTimeInMs || stForm.validationDebounceTimeInMs
                     )
                 }
             );
@@ -179,13 +180,13 @@ export class Validation extends st.component<IAttrValidation> {
      }*/
 
     onTargetEvent = (eventListener: string) => (evt: Event) => {
-            if (this.target === evt.target) {
-                if(getFormConfig().logDebugMessages) {
-                    st.debug('validation', eventListener, evt, evt.target);
-                }
-                //do validation
-                this.validate();
+        if (this.target === evt.target) {
+            if (stForm.logDebugMessages) {
+                st.debug('validation', eventListener, evt, evt.target);
             }
+            //do validation
+            this.validate();
+        }
 
     };
 

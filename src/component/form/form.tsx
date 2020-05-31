@@ -5,7 +5,7 @@ import {IEventListener, ILifecycle} from "springtype/web/component/interface";
 import {ref} from "springtype/core/ref";
 import {htmlCollectionToArray, TYPE_FUNCTION} from "springtype/core/lang";
 import {Validation} from "..";
-import {getFormConfig} from "../../config";
+import {stForm} from "../../st-form";
 
 export interface FromValidationDetail {
     valid: boolean,
@@ -64,8 +64,8 @@ export class Form extends st.component<IAttrForm> {
 
     render() {
         return <form ref={{formRef: this}}>
-                {this.renderChildren()}
-            </form>
+            {this.renderChildren()}
+        </form>
 
     }
 
@@ -109,7 +109,7 @@ export class Form extends st.component<IAttrForm> {
 
     getElements(): Array<Validation> {
         //get validator name form configuration
-        const validatorPropertyName = getFormConfig().validationPropertyName;
+        const validatorPropertyName = stForm.validationPropertyName;
 
         const validationComponents: Array<Validation> = [];
         for (const element of htmlCollectionToArray<any>((this.formRef.elements))) {
