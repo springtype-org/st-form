@@ -7,7 +7,7 @@ import {FORM_IGNORE_PROPERTY_NAME, IAttrValidation, Validation} from "..";
 import {mergeArrays, TYPE_UNDEFINED} from "springtype/core/lang";
 import {max, maxLength, min, minLength, pattern, required} from "st-validate";
 
-export interface IAttrMatTextInput extends IAttrValidation {
+export interface IAttrInputValidation extends IAttrValidation {
     formIgnore?: boolean;
     placeholder?: string;
     readonly?: boolean;
@@ -20,7 +20,7 @@ export interface IAttrMatTextInput extends IAttrValidation {
 }
 
 @component
-export class InputValidation extends st.component<IAttrMatTextInput> implements ILifecycle {
+export class InputValidation extends st.component<IAttrInputValidation> implements ILifecycle {
 
     @attr
     formIgnore = false;
