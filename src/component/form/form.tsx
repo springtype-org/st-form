@@ -14,6 +14,9 @@ export interface FromValidationDetail {
 
 export interface IAttrForm {
     name?: string;
+
+    onFormValidation?: IEventListener<Event>;
+    onFormSubmit?: IEventListener<Event>;
 }
 
 export const FORM_PROPERTY_NAME = "FROM";
@@ -32,7 +35,10 @@ export class Form extends st.component<IAttrForm> {
     formRef!: HTMLFormElement;
 
     @event
-    onFormValidation!: IEventListener<Event>;
+    onFormValidation!: IEventListener<FromValidationDetail>;
+
+    @event
+    onFormSubmit!: IEventListener<Event>;
 
     validationReject!: (reason?: any) => void;
 
@@ -44,6 +50,14 @@ export class Form extends st.component<IAttrForm> {
             detail: {
                 ...detail,
             },
+        });
+    };
+    dispatchFormSubmit = () => {
+        this.dispatchEvent<{}>("formSubmit", {
+            bubbles: true,
+            cancelable: true,
+            composed: true,
+            detail: {}
         });
     };
 
@@ -68,7 +82,7 @@ export class Form extends st.component<IAttrForm> {
         //ignore on submit validate forms async
         this.formRef.addEventListener('submit', (evt) => {
             evt.preventDefault();
-
+            this.dispatchFormSubmit();
         })
     }
 
