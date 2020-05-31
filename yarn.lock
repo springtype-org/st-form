@@ -2750,10 +2750,15 @@ split-string@^3.0.1, split-string@^3.0.2:
   dependencies:
     extend-shallow "^3.0.0"
 
-springtype@^2.0.0-beta.83:
-  version "2.0.0-beta.83"
-  resolved "https://registry.yarnpkg.com/springtype/-/springtype-2.0.0-beta.83.tgz#fe939763a03dc834de72ed078a15a9d78463db98"
-  integrity sha512-pDqD5kiZzSmvyL3hztVlGSXN/iUOGNMOmx3CYWv6/o2GkI5dpKwqu1H32J5WFrrfOznPBn+uiqTFNTawgtIW6Q==
+springtype@^2.0.0-beta.85:
+  version "2.0.0-beta.85"
+  resolved "https://registry.yarnpkg.com/springtype/-/springtype-2.0.0-beta.85.tgz#e95e54042c3a962436761fe77a8d0fba7be7f618"
+  integrity sha512-Jm/kQsWapnMhHcCxZBDjJGofuzdq2Tc0lhXzBbQsOouGLeFtlLVFtIil5sKYDPN4xhlGHLczVNYZbGx+aCVSjw==
+
+st-validate@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/st-validate/-/st-validate-1.0.1.tgz#100cc2ba6b7665035bf0dbde01eb41b1ae985e69"
+  integrity sha512-eDk9+IOfn0RzuLWmdE8ZIJBow/uji5JBtWx6u4JzT/Os+1sFfwPSAxaqzMJOCYJRl+GFi9C+zmnYrHj75s0Bsw==
 
 stackframe@^0.3.1:
   version "0.3.1"
